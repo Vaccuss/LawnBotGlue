@@ -1,0 +1,18 @@
+# delete everything
+DELETE {?s ?p ?o} WHERE {?s ?p ?o}
+
+# select all
+SELECT * {?s ?p ?o}
+
+# lawn prefix
+PREFIX lawn: <http://www.semanticweb.org/dean/SemanticLawnWatering#>
+
+# select all triples associated with a quadrant snapshot
+PREFIX lawn: <http://www.semanticweb.org/dean/SemanticLawnWatering#>
+SELECT ?s ?p ?o {{lawn:quad1Day0Morning ?p ?o} UNION {?s ?p lawn:quad1Day0Morning}}
+
+# delete all triples associated with a quadrant snapshot
+PREFIX lawn: <http://www.semanticweb.org/dean/SemanticLawnWatering#>
+DELETE WHERE {?s ?p lawn:quad1Day0Morning};
+DELETE WHERE {lawn:quad1Day0Morning ?p ?o}
+
