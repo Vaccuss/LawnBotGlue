@@ -9,14 +9,14 @@
             <disclaimer>http://www.bom.gov.au/other/disclaimer.shtml</disclaimer>
         </source>
         <identifier>IDQ10923</identifier>
-        <issue-time-utc>2016-02-16T18:58:14Z</issue-time-utc>
-        <issue-time-local tz="EST">2016-02-17T04:58:14+10:00</issue-time-local>
-        <sent-time>2016-02-16T18:58:14Z</sent-time>
-        <expiry-time>2016-02-17T18:58:14Z</expiry-time>
-        <validity-bgn-time-local tz="EST">2016-02-17T00:00:00+10:00</validity-bgn-time-local>
-        <validity-end-time-local tz="EST">2016-02-23T23:59:59+10:00</validity-end-time-local>
-        <next-routine-issue-time-utc>2016-02-17T06:30:00Z</next-routine-issue-time-utc>
-        <next-routine-issue-time-local tz="EST">2016-02-17T16:30:00+10:00</next-routine-issue-time-local>
+        <issue-time-utc>2016-02-18T06:30:00Z</issue-time-utc>
+        <issue-time-local tz="EST">2016-02-18T16:30:00+10:00</issue-time-local>
+        <sent-time>2016-02-18T06:32:01Z</sent-time>
+        <expiry-time>2016-02-19T06:30:00Z</expiry-time>
+        <validity-bgn-time-local tz="EST">2016-02-18T16:32:01+10:00</validity-bgn-time-local>
+        <validity-end-time-local tz="EST">2016-02-25T23:59:59+10:00</validity-end-time-local>
+        <next-routine-issue-time-utc>2016-02-18T18:55:00Z</next-routine-issue-time-utc>
+        <next-routine-issue-time-local tz="EST">2016-02-19T04:55:00+10:00</next-routine-issue-time-local>
         <status>O</status>
         <service>WSP</service>
         <sub-service>FTW</sub-service>
@@ -25,72 +25,80 @@
     </amoc>
     <forecast>
         <area aac="QLD_FA001" description="Queensland" type="region">
-            <forecast-period start-time-local="2016-02-17T04:58:14+10:00" end-time-local="2016-02-17T04:58:14+10:00" start-time-utc="2016-02-16T18:58:14Z" end-time-utc="2016-02-16T18:58:14Z">
+            <forecast-period start-time-local="2016-02-18T16:32:01+10:00" end-time-local="2016-02-18T16:32:01+10:00" start-time-utc="2016-02-18T06:32:01Z" end-time-utc="2016-02-18T06:32:01Z">
                 <text type="warning_summary_footer">For latest warnings go to www.bom.gov.au, subscribe to RSS feeds, call 1300-659-219* or listen for warnings on relevant TV and radio broadcasts.</text>
                 <text type="product_footer">* Calls to 1300 numbers cost around 27.5c incl. GST, higher from mobiles or public phones.</text>
             </forecast-period>
         </area>
         <area aac="QLD_PT022" description="Townsville" type="location" parent-aac="QLD_FA001">
-            <forecast-period index="0" start-time-local="2016-02-17T00:00:00+10:00" end-time-local="2016-02-18T00:00:00+10:00" start-time-utc="2016-02-16T14:00:00Z" end-time-utc="2016-02-17T14:00:00Z">
+            <forecast-period index="0" start-time-local="2016-02-18T17:00:00+10:00" end-time-local="2016-02-19T00:00:00+10:00" start-time-utc="2016-02-18T07:00:00Z" end-time-utc="2016-02-18T14:00:00Z">
                 <element type="forecast_icon_code">3</element>
-                <element type="air_temperature_maximum" units="Celsius">36</element>
-                <text type="forecast">Hot and mostly sunny. Light winds becoming northeasterly 15 to 20 km/h in the early afternoon then becoming light in the evening.</text>
-                <text type="precis">Hot and mostly sunny.</text>
-                <text type="probability_of_precipitation">10%</text>
+                <text type="forecast">Partly cloudy. Slight (20%) chance of a shower. The chance of a thunderstorm. Winds northeasterly 20 to 25 km/h becoming light in the late evening.</text>
+                <text type="precis">Partly cloudy.</text>
+                <text type="probability_of_precipitation">20%</text>
+            </forecast-period>
+            <forecast-period index="1" start-time-local="2016-02-19T00:00:00+10:00" end-time-local="2016-02-20T00:00:00+10:00" start-time-utc="2016-02-18T14:00:00Z" end-time-utc="2016-02-19T14:00:00Z">
+                <element type="forecast_icon_code">3</element>
+                <element type="precipitation_range">0 mm</element>
+                <element type="air_temperature_minimum" units="Celsius">28</element>
+                <element type="air_temperature_maximum" units="Celsius">35</element>
+                <text type="forecast">Mostly sunny. Slight (20%) chance of a shower. The chance of a thunderstorm. Light winds becoming northerly 20 to 25 km/h in the morning then tending northeasterly 15 to 25 km/h in the early afternoon.</text>
+                <text type="precis">Mostly sunny.</text>
+                <text type="probability_of_precipitation">20%</text>
                 <text type="fire_danger">High</text>
                 <text type="uv_alert">UV Alert from 8:30 am to 4:20 pm, UV Index predicted to reach 15 [Extreme]</text>
             </forecast-period>
-            <forecast-period index="1" start-time-local="2016-02-18T00:00:00+10:00" end-time-local="2016-02-19T00:00:00+10:00" start-time-utc="2016-02-17T14:00:00Z" end-time-utc="2016-02-18T14:00:00Z">
-                <element type="forecast_icon_code">16</element>
-                <element type="precipitation_range">0 to 0.2 mm</element>
-                <element type="air_temperature_minimum" units="Celsius">27</element>
-                <element type="air_temperature_maximum" units="Celsius">36</element>
-                <text type="forecast">Partly cloudy. Slight (30%) chance of a shower or thunderstorm in the afternoon. Light winds becoming north to northeasterly 20 to 25 km/h in the middle of the day then becoming light in the evening.</text>
-                <text type="precis">Possible shower or storm.</text>
-                <text type="probability_of_precipitation">30%</text>
-            </forecast-period>
-            <forecast-period index="2" start-time-local="2016-02-19T00:00:00+10:00" end-time-local="2016-02-20T00:00:00+10:00" start-time-utc="2016-02-18T14:00:00Z" end-time-utc="2016-02-19T14:00:00Z">
+            <forecast-period index="2" start-time-local="2016-02-20T00:00:00+10:00" end-time-local="2016-02-21T00:00:00+10:00" start-time-utc="2016-02-19T14:00:00Z" end-time-utc="2016-02-20T14:00:00Z">
                 <element type="forecast_icon_code">17</element>
                 <element type="precipitation_range">0 to 1 mm</element>
                 <element type="air_temperature_minimum" units="Celsius">27</element>
-                <element type="air_temperature_maximum" units="Celsius">34</element>
-                <text type="forecast">Partly cloudy. Medium (40%) chance of showers. The chance of a thunderstorm in the afternoon and evening. Light winds becoming northeasterly 20 to 30 km/h during the day then tending northerly 15 to 25 km/h during the afternoon.</text>
-                <text type="precis">Possible shower.</text>
-                <text type="probability_of_precipitation">40%</text>
-            </forecast-period>
-            <forecast-period index="3" start-time-local="2016-02-20T00:00:00+10:00" end-time-local="2016-02-21T00:00:00+10:00" start-time-utc="2016-02-19T14:00:00Z" end-time-utc="2016-02-20T14:00:00Z">
-                <element type="forecast_icon_code">17</element>
-                <element type="precipitation_range">0 to 2 mm</element>
-                <element type="air_temperature_minimum" units="Celsius">27</element>
                 <element type="air_temperature_maximum" units="Celsius">33</element>
-                <text type="forecast">Partly cloudy. Medium (40%) chance of showers in the morning. The chance of a thunderstorm in the morning. Light winds becoming northeasterly 25 to 30 km/h during the morning then tending easterly 20 to 30 km/h during the evening.</text>
+                <text type="forecast">Slight (30%) chance of a shower in the morning. The chance of a thunderstorm in the morning. Mostly sunny afternoon. Light winds becoming northeasterly 15 to 20 km/h in the morning.</text>
                 <text type="precis">Possible morning shower.</text>
-                <text type="probability_of_precipitation">40%</text>
+                <text type="probability_of_precipitation">30%</text>
             </forecast-period>
-            <forecast-period index="4" start-time-local="2016-02-21T00:00:00+10:00" end-time-local="2016-02-22T00:00:00+10:00" start-time-utc="2016-02-20T14:00:00Z" end-time-utc="2016-02-21T14:00:00Z">
-                <element type="forecast_icon_code">17</element>
+            <forecast-period index="3" start-time-local="2016-02-21T00:00:00+10:00" end-time-local="2016-02-22T00:00:00+10:00" start-time-utc="2016-02-20T14:00:00Z" end-time-utc="2016-02-21T14:00:00Z">
+                <element type="forecast_icon_code">11</element>
                 <element type="precipitation_range">0 to 2 mm</element>
                 <element type="air_temperature_minimum" units="Celsius">26</element>
-                <element type="air_temperature_maximum" units="Celsius">34</element>
-                <text type="forecast">Partly cloudy. Medium (40%) chance of showers. Winds northeast to southeasterly 20 to 30 km/h becoming southeasterly 15 to 20 km/h later.</text>
-                <text type="precis">Possible shower.</text>
-                <text type="probability_of_precipitation">40%</text>
-            </forecast-period>
-            <forecast-period index="5" start-time-local="2016-02-22T00:00:00+10:00" end-time-local="2016-02-23T00:00:00+10:00" start-time-utc="2016-02-21T14:00:00Z" end-time-utc="2016-02-22T14:00:00Z">
-                <element type="forecast_icon_code">11</element>
-                <element type="precipitation_range">0 to 3 mm</element>
-                <element type="air_temperature_minimum" units="Celsius">26</element>
                 <element type="air_temperature_maximum" units="Celsius">33</element>
-                <text type="forecast">Partly cloudy. Medium (50%) chance of showers. The chance of a thunderstorm. Winds east to southeasterly 25 to 35 km/h.</text>
+                <text type="forecast">Partly cloudy. Medium (50%) chance of showers. Winds easterly 15 to 20 km/h becoming light during the morning then becoming easterly 15 to 25 km/h during the day.</text>
                 <text type="precis">Shower or two.</text>
                 <text type="probability_of_precipitation">50%</text>
             </forecast-period>
-            <forecast-period index="6" start-time-local="2016-02-23T00:00:00+10:00" end-time-local="2016-02-24T00:00:00+10:00" start-time-utc="2016-02-22T14:00:00Z" end-time-utc="2016-02-23T14:00:00Z">
-                <element type="forecast_icon_code">17</element>
+            <forecast-period index="4" start-time-local="2016-02-22T00:00:00+10:00" end-time-local="2016-02-23T00:00:00+10:00" start-time-utc="2016-02-21T14:00:00Z" end-time-utc="2016-02-22T14:00:00Z">
+                <element type="forecast_icon_code">16</element>
+                <element type="precipitation_range">1 to 6 mm</element>
+                <element type="air_temperature_minimum" units="Celsius">26</element>
+                <element type="air_temperature_maximum" units="Celsius">33</element>
+                <text type="forecast">Partly cloudy. Medium (60%) chance of showers, most likely in the morning and afternoon. The chance of a thunderstorm in the morning and afternoon. Light winds becoming easterly 20 to 25 km/h during the day then tending southeasterly 15 to 20 km/h during the evening.</text>
+                <text type="precis">Shower or two. Possible storm.</text>
+                <text type="probability_of_precipitation">60%</text>
+            </forecast-period>
+            <forecast-period index="5" start-time-local="2016-02-23T00:00:00+10:00" end-time-local="2016-02-24T00:00:00+10:00" start-time-utc="2016-02-22T14:00:00Z" end-time-utc="2016-02-23T14:00:00Z">
+                <element type="forecast_icon_code">11</element>
                 <element type="precipitation_range">0 to 2 mm</element>
                 <element type="air_temperature_minimum" units="Celsius">26</element>
                 <element type="air_temperature_maximum" units="Celsius">32</element>
-                <text type="forecast">Partly cloudy. Medium (40%) chance of showers. Winds southeasterly 15 to 20 km/h tending easterly 20 to 30 km/h during the morning.</text>
+                <text type="forecast">Partly cloudy. Medium (50%) chance of showers. Light winds becoming east to southeasterly 20 to 30 km/h during the morning.</text>
+                <text type="precis">Shower or two.</text>
+                <text type="probability_of_precipitation">50%</text>
+            </forecast-period>
+            <forecast-period index="6" start-time-local="2016-02-24T00:00:00+10:00" end-time-local="2016-02-25T00:00:00+10:00" start-time-utc="2016-02-23T14:00:00Z" end-time-utc="2016-02-24T14:00:00Z">
+                <element type="forecast_icon_code">17</element>
+                <element type="precipitation_range">0 to 2 mm</element>
+                <element type="air_temperature_minimum" units="Celsius">25</element>
+                <element type="air_temperature_maximum" units="Celsius">32</element>
+                <text type="forecast">Partly cloudy. Medium (40%) chance of showers. Light winds becoming easterly 20 to 25 km/h during the morning.</text>
+                <text type="precis">Possible shower.</text>
+                <text type="probability_of_precipitation">40%</text>
+            </forecast-period>
+            <forecast-period index="7" start-time-local="2016-02-25T00:00:00+10:00" end-time-local="2016-02-26T00:00:00+10:00" start-time-utc="2016-02-24T14:00:00Z" end-time-utc="2016-02-25T14:00:00Z">
+                <element type="forecast_icon_code">17</element>
+                <element type="precipitation_range">0 to 1 mm</element>
+                <element type="air_temperature_minimum" units="Celsius">25</element>
+                <element type="air_temperature_maximum" units="Celsius">33</element>
+                <text type="forecast">Mostly sunny. Medium (40%) chance of showers. Light winds becoming easterly 15 to 20 km/h during the day.</text>
                 <text type="precis">Possible shower.</text>
                 <text type="probability_of_precipitation">40%</text>
             </forecast-period>

@@ -1,5 +1,8 @@
 import ftplib
 from xml.etree import ElementTree
+import bs4
+import requests
+
 
 def main():
     PredictionData = "IDQ10923.xml"
@@ -14,12 +17,29 @@ def main():
     prob_rain = tree.findall("./forecast/area/forecast-period/text[@type='probability_of_precipitation']")
 
     count = 0
-    for i in range(0, 6):
+    for i in range(0, 1):
         dict[count] = {'Min_Air_Temp': air_min_temp[count].text, 'Max_Air_Temp': air_max_temp[count].text, 'Rain_chance': prob_rain[count].text}
         count += 1
 
+    dict[0]['Evapotrainspriation'] = getEvapotranspiration()
+
+    # DICTIONARY IS IN FORMAT {KEY :{KEY, VALUE}}
     print(dict)
 
+
+def getEvapotranspiration():
+    result = requests.get('http://www.bom.gov.au/watl/eto/tables/qld/daily.shtml')
+    soup = bs4.BeautifulSoup(result.text)
+
+    allitems = soup.find_all('tr')
+
+    item =  allitems[len(allitems)-10]
+    count = 0
+    for i in item:
+        count += 1
+        if count == 3:
+            evap =  i.text
+    return evap
 
 def ftpGetFiles(retriveFile):
     BOMURL = 'ftp.bom.gov.au'
