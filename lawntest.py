@@ -188,4 +188,4 @@ def get_current_day_number():
 
 if __name__ == '__main__':
     weather_data = get_weather.get_weather_dict()
-    print(make_query_insert_weather_area_data('townsvilleYard', weather_data))
+    print(make_query_insert_weather_area_data('townsvilleWeather', weather_data))

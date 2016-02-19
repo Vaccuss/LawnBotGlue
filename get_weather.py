@@ -23,8 +23,7 @@ def get_weather_dict():
 
     dict[0]['Evapotranspiration'] = getEvapotranspiration()
 
-    # DICTIONARY IS IN FORMAT {KEY :{KEY, VALUE}}
-    print(dict)
+    return dict[0]
 
 
 def getEvapotranspiration():
