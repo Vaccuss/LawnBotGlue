@@ -16,3 +16,7 @@ PREFIX lawn: <http://www.semanticweb.org/dean/SemanticLawnWatering#>
 DELETE WHERE {?s ?p lawn:quad1Day0Morning};
 DELETE WHERE {lawn:quad1Day0Morning ?p ?o}
 
+# select weather area triples
+PREFIX lawn: <http://www.semanticweb.org/dean/SemanticLawnWatering#>
+SELECT ?s ?p ?o {lawn:townsvilleWeather ?p ?o}
+

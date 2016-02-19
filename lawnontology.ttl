@@ -1,0 +1,1559 @@
+@prefix : <http://api.stardog.com/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix stardog: <tag:stardog:api:> .
+@base <http://www.semanticweb.org/dean/SemanticLawnWatering> .
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering> rdf:type owl:Ontology .
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#hasCharacteristic
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#hasCharacteristic> rdf:type owl:ObjectProperty ;
+                                                                         
+                                                                         rdfs:range <http://www.semanticweb.org/dean/SemanticLawnWatering#Characteristics> .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#hasQuadrant
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#hasQuadrant> rdf:type owl:ObjectProperty ;
+                                                                   
+                                                                   rdfs:range <http://www.semanticweb.org/dean/SemanticLawnWatering#Quadrant> ;
+                                                                   
+                                                                   rdfs:subPropertyOf owl:topObjectProperty .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#hasQuadrantSnapshot
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#hasQuadrantSnapshot> rdf:type owl:ObjectProperty .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#hasSoilCharacteristic
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#hasSoilCharacteristic> rdf:type owl:ObjectProperty ;
+                                                                             
+                                                                             rdfs:subPropertyOf <http://www.semanticweb.org/dean/SemanticLawnWatering#hasCharacteristic> .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#hasWeatherArea
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#hasWeatherArea> rdf:type owl:ObjectProperty .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#hasYardSnapshot
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#hasYardSnapshot> rdf:type owl:ObjectProperty .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#isPartOfYard
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#isPartOfYard> rdf:type owl:ObjectProperty ;
+                                                                    
+                                                                    rdfs:domain <http://www.semanticweb.org/dean/SemanticLawnWatering#Quadrant> ;
+                                                                    
+                                                                    rdfs:range <http://www.semanticweb.org/dean/SemanticLawnWatering#Yard> .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> rdf:type owl:DatatypeProperty ,
+                                                                       owl:FunctionalProperty ;
+                                                              
+                                                              rdfs:range xsd:int .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#hasDeepMoistureReading
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#hasDeepMoistureReading> rdf:type owl:DatatypeProperty ,
+                                                                                       owl:FunctionalProperty ;
+                                                                              
+                                                                              rdfs:range xsd:float .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#hasEvapotranspiration
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#hasEvapotranspiration> rdf:type owl:DatatypeProperty ,
+                                                                                      owl:FunctionalProperty ;
+                                                                             
+                                                                             rdfs:range xsd:float .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#hasMeteorologicalAirPressure
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#hasMeteorologicalAirPressure> rdf:type owl:DatatypeProperty ,
+                                                                                             owl:FunctionalProperty ;
+                                                                                    
+                                                                                    rdfs:range xsd:int .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#hasMeteorologicalForecast
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#hasMeteorologicalForecast> rdf:type owl:DatatypeProperty ,
+                                                                                          owl:FunctionalProperty ;
+                                                                                 
+                                                                                 rdfs:range [ rdf:type rdfs:Datatype ;
+                                                                                              owl:oneOf [ rdf:type rdf:List ;
+                                                                                                          rdf:first "Cloudy" ;
+                                                                                                          rdf:rest [ rdf:type rdf:List ;
+                                                                                                                     rdf:first "Partly_Cloudy" ;
+                                                                                                                     rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                rdf:first "Rainfall" ;
+                                                                                                                                rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                           rdf:first "Scattered_Showers" ;
+                                                                                                                                           rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                                      rdf:first "Sunny" ;
+                                                                                                                                                      rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                                                 rdf:first "Thunderstorms" ;
+                                                                                                                                                                 rdf:rest rdf:nil
+                                                                                                                                                               ]
+                                                                                                                                                    ]
+                                                                                                                                         ]
+                                                                                                                              ]
+                                                                                                                   ]
+                                                                                                        ]
+                                                                                            ] .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#hasMeteorologicalHumidity
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#hasMeteorologicalHumidity> rdf:type owl:DatatypeProperty ,
+                                                                                          owl:FunctionalProperty ;
+                                                                                 
+                                                                                 rdfs:range xsd:int .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#hasMeteorologicalMaximumTemperature
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#hasMeteorologicalMaximumTemperature> rdf:type owl:DatatypeProperty ,
+                                                                                                    owl:FunctionalProperty ;
+                                                                                           
+                                                                                           rdfs:range xsd:int .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#hasMeteorologicalMinimumTemperature
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#hasMeteorologicalMinimumTemperature> rdf:type owl:DatatypeProperty ;
+                                                                                           
+                                                                                           rdfs:range xsd:int ;
+                                                                                           
+                                                                                           rdfs:subPropertyOf owl:topDataProperty .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#hasMeteorologicalRainChance
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#hasMeteorologicalRainChance> rdf:type owl:DatatypeProperty ,
+                                                                                            owl:FunctionalProperty ;
+                                                                                   
+                                                                                   rdfs:range xsd:int .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#hasMeteorologicalUV
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#hasMeteorologicalUV> rdf:type owl:DatatypeProperty ,
+                                                                                    owl:FunctionalProperty ;
+                                                                           
+                                                                           rdfs:range xsd:int .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#hasMeteorologicalWindDirection
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#hasMeteorologicalWindDirection> rdf:type owl:DatatypeProperty ,
+                                                                                               owl:FunctionalProperty .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#hasMeteorologicalWindSpeed
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#hasMeteorologicalWindSpeed> rdf:type owl:DatatypeProperty ,
+                                                                                           owl:FunctionalProperty ;
+                                                                                  
+                                                                                  rdfs:range xsd:int .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#hasQuadrantShaded
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#hasQuadrantShaded> rdf:type owl:DatatypeProperty ,
+                                                                                  owl:FunctionalProperty ;
+                                                                         
+                                                                         rdfs:range xsd:float .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#hasSaturationPoint
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#hasSaturationPoint> rdf:type owl:DatatypeProperty ,
+                                                                                   owl:FunctionalProperty ;
+                                                                          
+                                                                          rdfs:range xsd:float .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#hasSuperficialMoistureReading
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#hasSuperficialMoistureReading> rdf:type owl:DatatypeProperty ,
+                                                                                              owl:FunctionalProperty ;
+                                                                                     
+                                                                                     rdfs:range xsd:float .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeCycle
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeCycle> rdf:type owl:DatatypeProperty ,
+                                                                             owl:FunctionalProperty .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> rdf:type owl:DatatypeProperty ,
+                                                                                 owl:FunctionalProperty ;
+                                                                        
+                                                                        rdfs:range [ rdf:type rdfs:Datatype ;
+                                                                                     owl:oneOf [ rdf:type rdf:List ;
+                                                                                                 rdf:first "Afternoon" ;
+                                                                                                 rdf:rest [ rdf:type rdf:List ;
+                                                                                                            rdf:first "Midday" ;
+                                                                                                            rdf:rest [ rdf:type rdf:List ;
+                                                                                                                       rdf:first "Morning" ;
+                                                                                                                       rdf:rest rdf:nil
+                                                                                                                     ]
+                                                                                                          ]
+                                                                                               ]
+                                                                                   ] .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#hasWaterRestrictions
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#hasWaterRestrictions> rdf:type owl:DatatypeProperty ,
+                                                                                     owl:FunctionalProperty ;
+                                                                            
+                                                                            rdfs:range xsd:string ,
+                                                                                       [ rdf:type rdfs:Datatype ;
+                                                                                         owl:oneOf [ rdf:type rdf:List ;
+                                                                                                     rdf:first "Level 1" ;
+                                                                                                     rdf:rest [ rdf:type rdf:List ;
+                                                                                                                rdf:first "Level 2" ;
+                                                                                                                rdf:rest [ rdf:type rdf:List ;
+                                                                                                                           rdf:first "Level 3" ;
+                                                                                                                           rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                      rdf:first "Level 4" ;
+                                                                                                                                      rdf:rest [ rdf:type rdf:List ;
+                                                                                                                                                 rdf:first "Level 5" ;
+                                                                                                                                                 rdf:rest rdf:nil
+                                                                                                                                               ]
+                                                                                                                                    ]
+                                                                                                                         ]
+                                                                                                              ]
+                                                                                                   ]
+                                                                                       ] .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#hasYardAmbientHumidityReading
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#hasYardAmbientHumidityReading> rdf:type owl:DatatypeProperty ,
+                                                                                              owl:FunctionalProperty ;
+                                                                                     
+                                                                                     rdfs:range xsd:int ;
+                                                                                     
+                                                                                     rdfs:subPropertyOf owl:topDataProperty .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#hasYardAmbientTemperatureReading
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#hasYardAmbientTemperatureReading> rdf:type owl:DatatypeProperty ,
+                                                                                                 owl:FunctionalProperty ;
+                                                                                        
+                                                                                        rdfs:range xsd:int .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#hasYardIlluminanceReading
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#hasYardIlluminanceReading> rdf:type owl:DatatypeProperty ,
+                                                                                          owl:FunctionalProperty .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#hasYardSoilHumidityReading
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#hasYardSoilHumidityReading> rdf:type owl:DatatypeProperty ,
+                                                                                           owl:FunctionalProperty .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#hasYardSoilTemperatureReading
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#hasYardSoilTemperatureReading> rdf:type owl:DatatypeProperty ,
+                                                                                              owl:FunctionalProperty .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#isDay
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#isDay> rdf:type owl:DatatypeProperty ,
+                                                                      owl:FunctionalProperty ;
+                                                             
+                                                             rdfs:range xsd:int .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#isPartOfQuadrant
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#isPartOfQuadrant> rdf:type owl:DatatypeProperty ,
+                                                                                 owl:FunctionalProperty ;
+                                                                        
+                                                                        owl:deprecated "" ;
+                                                                        
+                                                                        rdfs:range xsd:int .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#waterQuadrant
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#waterQuadrant> rdf:type owl:DatatypeProperty ,
+                                                                              owl:FunctionalProperty ;
+                                                                     
+                                                                     rdfs:range xsd:boolean .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#waterRequired
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#waterRequired> rdf:type owl:DatatypeProperty ,
+                                                                              owl:FunctionalProperty ;
+                                                                     
+                                                                     rdfs:range xsd:float .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#Characteristics
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#Characteristics> rdf:type owl:Class .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#Clay
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#Clay> rdf:type owl:Class ;
+                                                            
+                                                            rdfs:subClassOf <http://www.semanticweb.org/dean/SemanticLawnWatering#Soil> .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#FruitTree
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#FruitTree> rdf:type owl:Class ;
+                                                                 
+                                                                 rdfs:subClassOf <http://www.semanticweb.org/dean/SemanticLawnWatering#Tree> .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#Grass
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#Grass> rdf:type owl:Class ;
+                                                             
+                                                             rdfs:subClassOf <http://www.semanticweb.org/dean/SemanticLawnWatering#Plant> ;
+                                                             
+                                                             owl:disjointWith <http://www.semanticweb.org/dean/SemanticLawnWatering#Tree> .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#Plant
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#Plant> rdf:type owl:Class ;
+                                                             
+                                                             rdfs:subClassOf <http://www.semanticweb.org/dean/SemanticLawnWatering#Characteristics> .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#Quadrant
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#Quadrant> rdf:type owl:Class ;
+                                                                
+                                                                rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty <http://www.semanticweb.org/dean/SemanticLawnWatering#hasSoilCharacteristic> ;
+                                                                                  owl:onClass <http://www.semanticweb.org/dean/SemanticLawnWatering#Soil> ;
+                                                                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                                                                ] ,
+                                                                                [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty <http://www.semanticweb.org/dean/SemanticLawnWatering#hasWeatherArea> ;
+                                                                                  owl:onClass <http://www.semanticweb.org/dean/SemanticLawnWatering#WeatherArea> ;
+                                                                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                                                                ] ;
+                                                                
+                                                                rdfs:comment "The quadrant class is the organisational concept that represent a part/square of a Yard (or garden). " .
+[ rdf:type owl:Axiom ;
+  rdfs:comment "Weather area is required as the Quadrant must belong to a geographical location that has weather." ;
+  owl:annotatedSource <http://www.semanticweb.org/dean/SemanticLawnWatering#Quadrant> ;
+  owl:annotatedProperty rdfs:subClassOf ;
+  owl:annotatedTarget [ rdf:type owl:Restriction ;
+                        owl:onProperty <http://www.semanticweb.org/dean/SemanticLawnWatering#hasWeatherArea> ;
+                        owl:onClass <http://www.semanticweb.org/dean/SemanticLawnWatering#WeatherArea> ;
+                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                      ]
+] .
+[ rdf:type owl:Axiom ;
+  rdfs:comment "soil types can change regularly however the ontology ssumes that the quadrants are small enough that the soil type can be catergorised into the the classes present in the ontology. " ;
+  owl:annotatedSource <http://www.semanticweb.org/dean/SemanticLawnWatering#Quadrant> ;
+  owl:annotatedProperty rdfs:subClassOf ;
+  owl:annotatedTarget [ rdf:type owl:Restriction ;
+                        owl:onProperty <http://www.semanticweb.org/dean/SemanticLawnWatering#hasSoilCharacteristic> ;
+                        owl:onClass <http://www.semanticweb.org/dean/SemanticLawnWatering#Soil> ;
+                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                      ]
+] .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> rdf:type owl:Class ;
+                                                                        
+                                                                        rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                                                          owl:onProperty <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> ;
+                                                                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                          owl:onDataRange xsd:int
+                                                                                        ] ,
+                                                                                        [ rdf:type owl:Restriction ;
+                                                                                          owl:onProperty <http://www.semanticweb.org/dean/SemanticLawnWatering#hasSuperficialMoistureReading> ;
+                                                                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                          owl:onDataRange xsd:float
+                                                                                        ] ,
+                                                                                        [ rdf:type owl:Restriction ;
+                                                                                          owl:onProperty <http://www.semanticweb.org/dean/SemanticLawnWatering#hasQuadrant> ;
+                                                                                          owl:onClass <http://www.semanticweb.org/dean/SemanticLawnWatering#Quadrant> ;
+                                                                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                                                                        ] ,
+                                                                                        [ rdf:type owl:Restriction ;
+                                                                                          owl:onProperty <http://www.semanticweb.org/dean/SemanticLawnWatering#hasQuadrantShaded> ;
+                                                                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                          owl:onDataRange xsd:float
+                                                                                        ] .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#Sandy
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#Sandy> rdf:type owl:Class ;
+                                                             
+                                                             rdfs:subClassOf <http://www.semanticweb.org/dean/SemanticLawnWatering#Soil> .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#SandyClay
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#SandyClay> rdf:type owl:Class ;
+                                                                 
+                                                                 rdfs:subClassOf <http://www.semanticweb.org/dean/SemanticLawnWatering#Soil> .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#SandyLoam
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#SandyLoam> rdf:type owl:Class ;
+                                                                 
+                                                                 rdfs:subClassOf <http://www.semanticweb.org/dean/SemanticLawnWatering#Soil> .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#Soil
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#Soil> rdf:type owl:Class ;
+                                                            
+                                                            rdfs:subClassOf <http://www.semanticweb.org/dean/SemanticLawnWatering#Characteristics> .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#Time
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#Time> rdf:type owl:Class .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#TimeCycle
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#TimeCycle> rdf:type owl:Class ;
+                                                                 
+                                                                 owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeCycle> ;
+                                                                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                       owl:onDataRange xsd:int
+                                                                                     ] ;
+                                                                 
+                                                                 rdfs:subClassOf <http://www.semanticweb.org/dean/SemanticLawnWatering#Time> ;
+                                                                 
+                                                                 rdfs:comment "This value represent the effective cycle of time that the ontology \"thinks\" with. for example one week is representeed as 7 therefore sunday is 0 and saturdat is 6. To find two days ago =  current day *minus* 2 *mod* 7. " .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#Today
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#Today> rdf:type owl:Class ;
+                                                             
+                                                             owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty <http://www.semanticweb.org/dean/SemanticLawnWatering#isDay> ;
+                                                                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                   owl:onDataRange xsd:int
+                                                                                 ] ;
+                                                             
+                                                             rdfs:subClassOf <http://www.semanticweb.org/dean/SemanticLawnWatering#Time> ;
+                                                             
+                                                             rdfs:comment "Todays value within the TimeCycle" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#Tree
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#Tree> rdf:type owl:Class ;
+                                                            
+                                                            rdfs:subClassOf <http://www.semanticweb.org/dean/SemanticLawnWatering#Plant> .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#WateringEvent
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#WateringEvent> rdf:type owl:Class .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#WeatherArea
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#WeatherArea> rdf:type owl:Class .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#Yard
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#Yard> rdf:type owl:Class ;
+                                                            
+                                                            rdfs:comment """The Yard is the class that represents the phyisical location of the yard(garden). It can be considered to to be the collection of all quadrants. 
+
+This is an organisational idea that may be required when extending this ontology to use data and assumptions from surrounding yards to inform geographically close  locations. """ .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#YardSnapshot
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#YardSnapshot> rdf:type owl:Class .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#clay
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#clay> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#Clay> ,
+                                                                     owl:NamedIndividual .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#currentDay
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#currentDay> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#Today> ,
+                                                                           owl:NamedIndividual .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad1
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad1> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#Quadrant> ,
+                                                                      owl:NamedIndividual ;
+                                                             
+                                                             <http://www.semanticweb.org/dean/SemanticLawnWatering#hasQuadrantSnapshot> <http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day0Afternoon> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day0Midday> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day0Morning> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day1Afternoon> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day1Midday> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day1Morning> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day2Afternoon> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day2Midday> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day2Morning> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day3Afternoon> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day3Midday> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day3Morning> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day4Afternoon> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day4Midday> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day4Morning> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day5Afternoon> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day5Midday> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day5Morning> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day6Afternoon> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day6Midday> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day6Morning> .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day0Afternoon
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day0Afternoon> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                   owl:NamedIndividual ;
+                                                                          
+                                                                          <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 0 ;
+                                                                          
+                                                                          <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Afternoon" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day0Midday
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day0Midday> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                owl:NamedIndividual ;
+                                                                       
+                                                                       <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 0 ;
+                                                                       
+                                                                       <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Midday" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day0Morning
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day0Morning> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                 owl:NamedIndividual ;
+                                                                        
+                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 0 ;
+                                                                        
+                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Morning" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day1Afternoon
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day1Afternoon> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                   owl:NamedIndividual ;
+                                                                          
+                                                                          <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 1 ;
+                                                                          
+                                                                          <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Afternoon" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day1Midday
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day1Midday> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                owl:NamedIndividual ;
+                                                                       
+                                                                       <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 1 ;
+                                                                       
+                                                                       <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Midday" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day1Morning
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day1Morning> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                 owl:NamedIndividual ;
+                                                                        
+                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 1 ;
+                                                                        
+                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Morning" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day2Afternoon
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day2Afternoon> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                   owl:NamedIndividual ;
+                                                                          
+                                                                          <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 2 ;
+                                                                          
+                                                                          <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Afternoon" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day2Midday
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day2Midday> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                owl:NamedIndividual ;
+                                                                       
+                                                                       <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 2 ;
+                                                                       
+                                                                       <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Midday" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day2Morning
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day2Morning> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                 owl:NamedIndividual ;
+                                                                        
+                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 2 ;
+                                                                        
+                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Morning" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day3Afternoon
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day3Afternoon> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                   owl:NamedIndividual ;
+                                                                          
+                                                                          <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 3 ;
+                                                                          
+                                                                          <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Afternoon" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day3Midday
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day3Midday> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                owl:NamedIndividual ;
+                                                                       
+                                                                       <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 3 ;
+                                                                       
+                                                                       <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Midday" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day3Morning
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day3Morning> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                 owl:NamedIndividual ;
+                                                                        
+                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 3 ;
+                                                                        
+                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Morning" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day4Afternoon
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day4Afternoon> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                   owl:NamedIndividual ;
+                                                                          
+                                                                          <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 4 ;
+                                                                          
+                                                                          <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Afternoon" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day4Midday
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day4Midday> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                owl:NamedIndividual ;
+                                                                       
+                                                                       <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 4 ;
+                                                                       
+                                                                       <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Midday" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day4Morning
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day4Morning> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                 owl:NamedIndividual ;
+                                                                        
+                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 4 ;
+                                                                        
+                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Morning" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day5Afternoon
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day5Afternoon> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                   owl:NamedIndividual ;
+                                                                          
+                                                                          <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 5 ;
+                                                                          
+                                                                          <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Afternoon" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day5Midday
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day5Midday> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                owl:NamedIndividual ;
+                                                                       
+                                                                       <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 5 ;
+                                                                       
+                                                                       <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Midday" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day5Morning
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day5Morning> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                 owl:NamedIndividual ;
+                                                                        
+                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 5 ;
+                                                                        
+                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Morning" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day6Afternoon
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day6Afternoon> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                   owl:NamedIndividual ;
+                                                                          
+                                                                          <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 6 ;
+                                                                          
+                                                                          <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Afternoon" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day6Midday
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day6Midday> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                owl:NamedIndividual ;
+                                                                       
+                                                                       <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 6 ;
+                                                                       
+                                                                       <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Midday" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day6Morning
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad1Day6Morning> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                 owl:NamedIndividual ;
+                                                                        
+                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 6 ;
+                                                                        
+                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Morning" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad2
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad2> rdf:type owl:NamedIndividual ;
+                                                             
+                                                             <http://www.semanticweb.org/dean/SemanticLawnWatering#hasQuadrantSnapshot> <http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day0Afternoon> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day0Midday> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day0Morning> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day1Afternoon> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day1Midday> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day1Morning> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day2Afternoon> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day2Midday> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day2Morning> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day3Afternoon> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day3Midday> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day3Morning> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day4Afternoon> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day4Midday> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day4Morning> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day5Afternoon> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day5Midday> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day5Morning> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day6Afternoon> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day6Midday> ,
+                                                                                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day6Morning> .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day0Afternoon
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day0Afternoon> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                   owl:NamedIndividual ;
+                                                                          
+                                                                          <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 0 ;
+                                                                          
+                                                                          <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Afternoon" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day0Midday
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day0Midday> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                owl:NamedIndividual ;
+                                                                       
+                                                                       <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 0 ;
+                                                                       
+                                                                       <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Midday" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day0Morning
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day0Morning> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                 owl:NamedIndividual ;
+                                                                        
+                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 0 ;
+                                                                        
+                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Morning" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day1Afternoon
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day1Afternoon> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                   owl:NamedIndividual ;
+                                                                          
+                                                                          <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 1 ;
+                                                                          
+                                                                          <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Afternoon" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day1Midday
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day1Midday> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                owl:NamedIndividual ;
+                                                                       
+                                                                       <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 1 ;
+                                                                       
+                                                                       <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Midday" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day1Morning
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day1Morning> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                 owl:NamedIndividual ;
+                                                                        
+                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 1 ;
+                                                                        
+                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Morning" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day2Afternoon
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day2Afternoon> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                   owl:NamedIndividual ;
+                                                                          
+                                                                          <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 2 ;
+                                                                          
+                                                                          <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Afternoon" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day2Midday
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day2Midday> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                owl:NamedIndividual ;
+                                                                       
+                                                                       <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 2 ;
+                                                                       
+                                                                       <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Midday" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day2Morning
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day2Morning> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                 owl:NamedIndividual ;
+                                                                        
+                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 2 ;
+                                                                        
+                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Morning" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day3Afternoon
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day3Afternoon> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                   owl:NamedIndividual ;
+                                                                          
+                                                                          <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 3 ;
+                                                                          
+                                                                          <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Afternoon" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day3Midday
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day3Midday> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                owl:NamedIndividual ;
+                                                                       
+                                                                       <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 3 ;
+                                                                       
+                                                                       <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Midday" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day3Morning
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day3Morning> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                 owl:NamedIndividual ;
+                                                                        
+                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 3 ;
+                                                                        
+                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Morning" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day4Afternoon
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day4Afternoon> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                   owl:NamedIndividual ;
+                                                                          
+                                                                          <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 4 ;
+                                                                          
+                                                                          <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Afternoon" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day4Midday
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day4Midday> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                owl:NamedIndividual ;
+                                                                       
+                                                                       <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 4 ;
+                                                                       
+                                                                       <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Midday" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day4Morning
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day4Morning> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                 owl:NamedIndividual ;
+                                                                        
+                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 4 ;
+                                                                        
+                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Morning" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day5Afternoon
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day5Afternoon> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                   owl:NamedIndividual ;
+                                                                          
+                                                                          <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 5 ;
+                                                                          
+                                                                          <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Afternoon" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day5Midday
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day5Midday> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                owl:NamedIndividual ;
+                                                                       
+                                                                       <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 5 ;
+                                                                       
+                                                                       <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Midday" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day5Morning
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day5Morning> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                 owl:NamedIndividual ;
+                                                                        
+                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 5 ;
+                                                                        
+                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Morning" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day6Afternoon
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day6Afternoon> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                   owl:NamedIndividual ;
+                                                                          
+                                                                          <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 6 ;
+                                                                          
+                                                                          <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Afternoon" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day6Midday
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day6Midday> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                owl:NamedIndividual ;
+                                                                       
+                                                                       <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 6 ;
+                                                                       
+                                                                       <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Midday" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day6Morning
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#quad2Day6Morning> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#QuadrantSnapshot> ,
+                                                                                 owl:NamedIndividual ;
+                                                                        
+                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 6 ;
+                                                                        
+                                                                        <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Morning" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#sandyClay
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#sandyClay> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#SandyClay> ,
+                                                                          owl:NamedIndividual .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#sandyLoam
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#sandyLoam> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#SandyLoam> ,
+                                                                          owl:NamedIndividual ;
+                                                                 
+                                                                 <http://www.semanticweb.org/dean/SemanticLawnWatering#hasSaturationPoint> "30.0"^^xsd:float .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleWeather
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleWeather> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#WeatherArea> ,
+                                                                                  owl:NamedIndividual .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYard
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYard> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#Yard> ,
+                                                                               owl:NamedIndividual ;
+                                                                      
+                                                                      <http://www.semanticweb.org/dean/SemanticLawnWatering#hasYardSnapshot> <http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay0Afternoon> ,
+                                                                                                                                             <http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay0Midday> ,
+                                                                                                                                             <http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay0Morning> ,
+                                                                                                                                             <http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay1Afternoon> ,
+                                                                                                                                             <http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay1Midday> ,
+                                                                                                                                             <http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay1Morning> ,
+                                                                                                                                             <http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay2Afternoon> ,
+                                                                                                                                             <http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay2Midday> ,
+                                                                                                                                             <http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay2Morning> ,
+                                                                                                                                             <http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay3Afternoon> ,
+                                                                                                                                             <http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay3Midday> ,
+                                                                                                                                             <http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay3Morning> ,
+                                                                                                                                             <http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay4Afternoon> ,
+                                                                                                                                             <http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay4Midday> ,
+                                                                                                                                             <http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay4Morning> ,
+                                                                                                                                             <http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay5Afternoon> ,
+                                                                                                                                             <http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay5Midday> ,
+                                                                                                                                             <http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay5Morning> ,
+                                                                                                                                             <http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay6Afternoon> ,
+                                                                                                                                             <http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay6Midday> ,
+                                                                                                                                             <http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay6Morning> .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay0Afternoon
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay0Afternoon> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#YardSnapshot> ,
+                                                                                            owl:NamedIndividual ;
+                                                                                   
+                                                                                   <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 0 ;
+                                                                                   
+                                                                                   <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Afternoon" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay0Midday
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay0Midday> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#YardSnapshot> ,
+                                                                                         owl:NamedIndividual ;
+                                                                                
+                                                                                <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 0 ;
+                                                                                
+                                                                                <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Midday" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay0Morning
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay0Morning> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#YardSnapshot> ,
+                                                                                          owl:NamedIndividual ;
+                                                                                 
+                                                                                 <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 0 ;
+                                                                                 
+                                                                                 <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Morning" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay1Afternoon
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay1Afternoon> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#YardSnapshot> ,
+                                                                                            owl:NamedIndividual ;
+                                                                                   
+                                                                                   <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 1 ;
+                                                                                   
+                                                                                   <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Afternoon" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay1Midday
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay1Midday> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#YardSnapshot> ,
+                                                                                         owl:NamedIndividual ;
+                                                                                
+                                                                                <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 1 ;
+                                                                                
+                                                                                <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Midday" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay1Morning
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay1Morning> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#YardSnapshot> ,
+                                                                                          owl:NamedIndividual ;
+                                                                                 
+                                                                                 <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 1 ;
+                                                                                 
+                                                                                 <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Morning" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay2Afternoon
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay2Afternoon> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#YardSnapshot> ,
+                                                                                            owl:NamedIndividual ;
+                                                                                   
+                                                                                   <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 2 ;
+                                                                                   
+                                                                                   <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Afternoon" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay2Midday
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay2Midday> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#YardSnapshot> ,
+                                                                                         owl:NamedIndividual ;
+                                                                                
+                                                                                <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 2 ;
+                                                                                
+                                                                                <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Midday" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay2Morning
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay2Morning> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#YardSnapshot> ,
+                                                                                          owl:NamedIndividual ;
+                                                                                 
+                                                                                 <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 2 ;
+                                                                                 
+                                                                                 <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Morning" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay3Afternoon
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay3Afternoon> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#YardSnapshot> ,
+                                                                                            owl:NamedIndividual ;
+                                                                                   
+                                                                                   <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 3 ;
+                                                                                   
+                                                                                   <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Afternoon" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay3Midday
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay3Midday> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#YardSnapshot> ,
+                                                                                         owl:NamedIndividual ;
+                                                                                
+                                                                                <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 3 ;
+                                                                                
+                                                                                <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Midday" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay3Morning
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay3Morning> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#YardSnapshot> ,
+                                                                                          owl:NamedIndividual ;
+                                                                                 
+                                                                                 <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 3 ;
+                                                                                 
+                                                                                 <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Morning" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay4Afternoon
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay4Afternoon> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#YardSnapshot> ,
+                                                                                            owl:NamedIndividual ;
+                                                                                   
+                                                                                   <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 4 ;
+                                                                                   
+                                                                                   <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Afternoon" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay4Midday
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay4Midday> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#YardSnapshot> ,
+                                                                                         owl:NamedIndividual ;
+                                                                                
+                                                                                <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 4 ;
+                                                                                
+                                                                                <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Midday" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay4Morning
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay4Morning> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#YardSnapshot> ,
+                                                                                          owl:NamedIndividual ;
+                                                                                 
+                                                                                 <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 4 ;
+                                                                                 
+                                                                                 <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Morning" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay5Afternoon
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay5Afternoon> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#YardSnapshot> ,
+                                                                                            owl:NamedIndividual ;
+                                                                                   
+                                                                                   <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 5 ;
+                                                                                   
+                                                                                   <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Afternoon" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay5Midday
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay5Midday> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#YardSnapshot> ,
+                                                                                         owl:NamedIndividual ;
+                                                                                
+                                                                                <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 5 ;
+                                                                                
+                                                                                <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Midday" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay5Morning
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay5Morning> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#YardSnapshot> ,
+                                                                                          owl:NamedIndividual ;
+                                                                                 
+                                                                                 <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 5 ;
+                                                                                 
+                                                                                 <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Morning" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay6Afternoon
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay6Afternoon> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#YardSnapshot> ,
+                                                                                            owl:NamedIndividual ;
+                                                                                   
+                                                                                   <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 6 ;
+                                                                                   
+                                                                                   <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Afternoon" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay6Midday
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay6Midday> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#YardSnapshot> ,
+                                                                                         owl:NamedIndividual ;
+                                                                                
+                                                                                <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 6 ;
+                                                                                
+                                                                                <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Midday" .
+
+
+
+###  http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay6Morning
+
+<http://www.semanticweb.org/dean/SemanticLawnWatering#townsvilleYardDay6Morning> rdf:type <http://www.semanticweb.org/dean/SemanticLawnWatering#YardSnapshot> ,
+                                                                                          owl:NamedIndividual ;
+                                                                                 
+                                                                                 <http://www.semanticweb.org/dean/SemanticLawnWatering#hasDay> 6 ;
+                                                                                 
+                                                                                 <http://www.semanticweb.org/dean/SemanticLawnWatering#hasTimeOfReading> "Morning" .
+
+
+
+
+
+#################################################################
+#
+#    General axioms
+#
+#################################################################
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <http://www.semanticweb.org/dean/SemanticLawnWatering#Clay>
+                <http://www.semanticweb.org/dean/SemanticLawnWatering#Sandy>
+                <http://www.semanticweb.org/dean/SemanticLawnWatering#SandyClay>
+                <http://www.semanticweb.org/dean/SemanticLawnWatering#SandyLoam>
+              )
+] .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <http://www.semanticweb.org/dean/SemanticLawnWatering#Plant>
+                <http://www.semanticweb.org/dean/SemanticLawnWatering#Soil>
+                <http://www.semanticweb.org/dean/SemanticLawnWatering#WateringEvent>
+                <http://www.semanticweb.org/dean/SemanticLawnWatering#Yard>
+              )
+] .
+
+
+
+
+
+#################################################################
+#
+#    Rules
+#
+#################################################################
+
+
+<urn:swrl#q> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+<urn:swrl#d> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+<urn:swrl#y> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+<urn:swrl#ev> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+<urn:swrl#sad> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+<urn:swrl#sat> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+<urn:swrl#wm> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+<urn:swrl#cev> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+<urn:swrl#cwat> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+<urn:swrl#ans> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+<urn:swrl#fwat> rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+[ rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+  <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                          rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                     rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                 <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.semanticweb.org/dean/SemanticLawnWatering#hasCharacteristic> ;
+                                                                 <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#d> ;
+                                                                 <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#q>
+                                                               ] ;
+                                                     rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.semanticweb.org/dean/SemanticLawnWatering#hasQuadrantShaded> ;
+                                                                                                  <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#q> ;
+                                                                                                  <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#sad>
+                                                                                                ] ;
+                                                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                                                                        <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.semanticweb.org/dean/SemanticLawnWatering#hasSuperficialMoistureReading> ;
+                                                                                                                        <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#q> ;
+                                                                                                                        <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#wm>
+                                                                                                                      ] ;
+                                                                                                            rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                                                       rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                                                                  rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                                                                                              <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#multiply> ;
+                                                                                                                                              <http://www.w3.org/2003/11/swrl#arguments> ( <urn:swrl#cwat>
+                                                                                                                                                                                           <urn:swrl#wm>
+                                                                                                                                                                                           <urn:swrl#sat>
+                                                                                                                                                                                         )
+                                                                                                                                            ] ;
+                                                                                                                                  rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                                                                             rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                                                                                        rdf:rest rdf:nil ;
+                                                                                                                                                        rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                                                                                                                    <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#subtract> ;
+                                                                                                                                                                    <http://www.w3.org/2003/11/swrl#arguments> ( <urn:swrl#fwat>
+                                                                                                                                                                                                                 <urn:swrl#cwat>
+                                                                                                                                                                                                                 <urn:swrl#cev>
+                                                                                                                                                                                                               )
+                                                                                                                                                                  ]
+                                                                                                                                                      ] ;
+                                                                                                                                             rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                                                                                                         <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#subtract> ;
+                                                                                                                                                         <http://www.w3.org/2003/11/swrl#arguments> ( <urn:swrl#ans>
+                                                                                                                                                                                                      <urn:swrl#sat>
+                                                                                                                                                                                                      <urn:swrl#fwat>
+                                                                                                                                                                                                    )
+                                                                                                                                                       ]
+                                                                                                                                           ]
+                                                                                                                                ] ;
+                                                                                                                       rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#BuiltinAtom> ;
+                                                                                                                                   <http://www.w3.org/2003/11/swrl#builtin> <http://www.w3.org/2003/11/swrlb#multiply> ;
+                                                                                                                                   <http://www.w3.org/2003/11/swrl#arguments> ( <urn:swrl#cev>
+                                                                                                                                                                                <urn:swrl#sad>
+                                                                                                                                                                                <urn:swrl#ev>
+                                                                                                                                                                              )
+                                                                                                                                 ]
+                                                                                                                     ]
+                                                                                                          ] ;
+                                                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                                                             <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.semanticweb.org/dean/SemanticLawnWatering#hasSaturationPoint> ;
+                                                                                                             <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#d> ;
+                                                                                                             <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#sat>
+                                                                                                           ]
+                                                                                               ]
+                                                                                    ] ;
+                                                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.semanticweb.org/dean/SemanticLawnWatering#hasEvapotranspiration> ;
+                                                                                       <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#ev> ;
+                                                                                       <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#y>
+                                                                                     ]
+                                                                         ] ;
+                                                                rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                            <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.semanticweb.org/dean/SemanticLawnWatering#isPartOfYard> ;
+                                                                            <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#q> ;
+                                                                            <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#y>
+                                                                          ]
+                                                              ]
+                                                   ] ;
+                                          rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                      <http://www.w3.org/2003/11/swrl#classPredicate> <http://www.semanticweb.org/dean/SemanticLawnWatering#Quadrant> ;
+                                                      <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#q>
+                                                    ]
+                                        ] ;
+  <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                          rdf:rest rdf:nil ;
+                                          rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom> ;
+                                                      <http://www.w3.org/2003/11/swrl#propertyPredicate> <http://www.semanticweb.org/dean/SemanticLawnWatering#waterRequired> ;
+                                                      <http://www.w3.org/2003/11/swrl#argument2> <urn:swrl#ans> ;
+                                                      <http://www.w3.org/2003/11/swrl#argument1> <urn:swrl#q>
+                                                    ]
+                                        ]
+] .
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+

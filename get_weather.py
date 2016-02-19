@@ -4,9 +4,9 @@ import bs4
 import requests
 
 
-def main():
-    PredictionData = "IDQ10923.xml"
-    ftpGetFiles(PredictionData)
+def get_weather_dict():
+    prediction_data = "IDQ10923.xml"
+    ftpGetFiles(prediction_data)
     with open('weatherdata.xml', 'rt') as f:
         tree = ElementTree.parse(f)
 
@@ -21,7 +21,7 @@ def main():
         dict[count] = {'Min_Air_Temp': air_min_temp[count].text, 'Max_Air_Temp': air_max_temp[count].text, 'Rain_chance': prob_rain[count].text}
         count += 1
 
-    dict[0]['Evapotrainspriation'] = getEvapotranspiration()
+    dict[0]['Evapotranspiration'] = getEvapotranspiration()
 
     # DICTIONARY IS IN FORMAT {KEY :{KEY, VALUE}}
     print(dict)
@@ -29,7 +29,7 @@ def main():
 
 def getEvapotranspiration():
     result = requests.get('http://www.bom.gov.au/watl/eto/tables/qld/daily.shtml')
-    soup = bs4.BeautifulSoup(result.text)
+    soup = bs4.BeautifulSoup(result.text, "html5lib")
 
     allitems = soup.find_all('tr')
 
@@ -51,4 +51,4 @@ def ftpGetFiles(retriveFile):
     ftp.close()
 
 if __name__ == '__main__':
-    main()
+    print(get_weather_dict())

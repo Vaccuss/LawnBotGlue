@@ -2,6 +2,7 @@ import json
 import urllib.request
 import datetime
 import stardog
+import get_weather
 
 DATABASE_NAME = 'lawntest'
 LAWNTEST_QUERY_ENDPOINT = stardog.get_sparql_endpoint(DATABASE_NAME)
@@ -107,7 +108,7 @@ DELETE WHERE {{lawn:{snapshot_id} lawn:hasYardAmbientTemperatureReading ?x}};
 DELETE WHERE {{lawn:{snapshot_id} lawn:hasYardAmbientHumidityReading ?x}};
 DELETE WHERE {{lawn:{snapshot_id} lawn:hasYardSoilHumidityReading ?x}};
 DELETE WHERE {{lawn:{snapshot_id} lawn:hasYardSoilTemperatureReading ?x}};
-DELETE WHERE {{lawn:{snapshot_id} lawn:hasYardIlluminanceReading ?x}};'''.format(snapshot_id=snapshot_id)
+DELETE WHERE {{lawn:{snapshot_id} lawn:hasYardIlluminanceReading ?x}}'''.format(snapshot_id=snapshot_id)
     return query
 
 
@@ -122,6 +123,11 @@ DELETE WHERE {{lawn:{snapshot_id} lawn:hasDeepSoilMoisture ?x}}'''.format(snapsh
 def make_query_insert_yard_snapshot_data_readings(yard_id, day_number, time_of_day, data):
     snapshot_id = make_yard_snapshot_id(yard_id, day_number, time_of_day)
     query = '''PREFIX lawn: <http://www.semanticweb.org/dean/SemanticLawnWatering#>
+DELETE WHERE {{lawn:{snapshot_id} lawn:hasYardAmbientTemperatureReading ?x}};
+DELETE WHERE {{lawn:{snapshot_id} lawn:hasYardAmbientHumidityReading ?x}};
+DELETE WHERE {{lawn:{snapshot_id} lawn:hasYardSoilHumidityReading ?x}};
+DELETE WHERE {{lawn:{snapshot_id} lawn:hasYardSoilTemperatureReading ?x}};
+DELETE WHERE {{lawn:{snapshot_id} lawn:hasYardIlluminanceReading ?x}};
 INSERT DATA {{lawn:{snapshot_id} lawn:hasYardAmbientTemperatureReading {temperature}}};
 INSERT DATA {{lawn:{snapshot_id} lawn:hasYardAmbientHumidityReading {humidity}}};
 INSERT DATA {{lawn:{snapshot_id} lawn:hasYardSoilHumidityReading {soil_humidity}}};
@@ -153,23 +159,26 @@ INSERT DATA {{lawn:{snapshot_id} lawn:hasDeepSoilMoisture {gypsum}}}'''.format(s
     return query
 
 
-def put_quadrant_snapshot(quadrant_id, day_number, time_of_day, sensor_data):
-    # ONTOLOGY NEEDS TO BE CHANGED SO THAT hasDay has range int
-    # if the quadrant snapshot individual doesn't exist, create it
-    # check if it exists
+def make_query_insert_weather_area_data(weather_area_id, data_dict):
+    max_temp = data_dict['Max_Air_Temp']
+    min_temp = data_dict['Min_Air_Temp']
+    evapo = data_dict['Evapotranspiration']
+    rain_chance = data_dict['Rain_chance'][:-1]  # exclude '%' at end
 
-    # initial insertion
-    query_create = '''PREFIX lawn: <http://www.semanticweb.org/dean/SemanticLawnWatering#>
-INSERT DATA {lawn:Q1_d0_morning rdf:type lawn:QuadrantSnapshot}'''
-    query_has_day = '''PREFIX lawn: <http://www.semanticweb.org/dean/SemanticLawnWatering#>
-INSERT DATA {lawn:Q1_d0_morning lawn:hasDay 0}'''
-    # if the quadrant snapshot has data, delete and replace it, otherwise just insert it
-
-    pass
-
-
-def query_quadrant_snapshots(quadrant_id):
-    pass
+    query = '''PREFIX lawn: <http://www.semanticweb.org/dean/SemanticLawnWatering#>
+DELETE WHERE {{lawn:{weather_area_id} lawn:hasMeteorologicalMaximumTemperature ?x}};
+DELETE WHERE {{lawn:{weather_area_id} lawn:hasMeteorologicalMinimumTemperature ?x}};
+DELETE WHERE {{lawn:{weather_area_id} lawn:hasMeteorologicalRainChance ?x}};
+DELETE WHERE {{lawn:{weather_area_id} lawn:hasEvapotranspiration ?x}};
+INSERT DATA {{lawn:{weather_area_id} lawn:hasMeteorologicalMaximumTemperature {max_temp}}};
+INSERT DATA {{lawn:{weather_area_id} lawn:hasMeteorologicalMinimumTemperature {min_temp}}};
+INSERT DATA {{lawn:{weather_area_id} lawn:hasMeteorologicalRainChance {rain_chance}}};
+INSERT DATA {{lawn:{weather_area_id} lawn:hasEvapotranspiration {evapo}}}'''.format(weather_area_id=weather_area_id,
+                                                                                       max_temp=max_temp,
+                                                                                       min_temp=min_temp,
+                                                                                       rain_chance=rain_chance,
+                                                                                       evapo=evapo)
+    return query
 
 
 def get_current_day_number():
@@ -178,23 +187,5 @@ def get_current_day_number():
 
 
 if __name__ == '__main__':
-    data = get_example_sensor_data_from_string()
-    print('***')
-    print(make_query_create_quadrant_snapshot('quad1', 0, 'Morning'))
-    print('***')
-    print(make_query_insert_yard_snapshot_data_readings('townsvilleYard', 0, 'Morning', data))
-    print('***')
-    print(make_query_insert_quadrant_snapshot_data_readings('quad1', 0, 'Morning', data))
-    print('***')
-    print(make_query_create_quadrant_snapshot('quad1', 0, 'Midday'))
-    # json.loads()
-    sparql_endpoint_url = stardog.get_sparql_endpoint('lawntest')
-    for yard in ['townsvilleYard']:
-        for day in range(7):
-            for time_of_day in TIMES_OF_DAY:
-                query = make_query_create_yard_snapshot(yard, day, time_of_day)
-                try:
-                    stardog.query_stardog(query, sparql_endpoint_url)
-                except stardog.StardogException:
-                    exit()
-                print('OKAY {}{}{}'.format(yard, day, time_of_day))
+    weather_data = get_weather.get_weather_dict()
+    print(make_query_insert_weather_area_data('townsvilleYard', weather_data))
